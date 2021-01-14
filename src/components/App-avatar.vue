@@ -1,6 +1,6 @@
 <template>
     <div class="avatar">
-        <img :src="avatar">
+        <img :src="info">
     </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'App-avatar',
   props: {
-    avatar: {
+    info: {
       type: String
     }
   }     

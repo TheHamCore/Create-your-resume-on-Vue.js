@@ -1,12 +1,12 @@
 <template>
-    <h2>{{ subtitle }}</h2>
+    <h2>{{ info }}</h2>
 </template>
 
 <script>
 export default {
   name: 'App-subtitle',
   props: {
-    subtitle: {
+    info: {
       type: String
     }
   }     

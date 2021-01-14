@@ -10,7 +10,8 @@
             id="type" 
           > 
             <option
-              v-for="option in optionArray" :key="option.value"
+              v-for="option in optionArray" 
+              :key="option.value"
               :value="option.value"
             >
               {{ option.label }}
@@ -44,6 +45,7 @@
       <app-display
         :informationArray="informationArray"
         :currentType="currentType"
+        :currentText="currentText"
       >
       </app-display>
 
@@ -67,24 +69,24 @@ export default {
   data () {
     return {
       informationArray: [],
-      currentType: 'title',
+      currentType: 'app-title',
       currentText: '',
       optionArray: [
         {
           label: 'Заголовок',
-          value: 'title'
+          value: 'app-title'
         },
         {
           label: 'Подзаголовок',
-          value: 'subtitle'
+          value: 'app-subtitle'
         },
         {
           label: 'Аватар',
-          value: 'avatar'
+          value: 'app-avatar'
         },
         {
           label: 'Текст',
-          value: 'text'
+          value: 'app-text'
         },
       ]
     }
@@ -101,12 +103,12 @@ export default {
   },
   computed: {
     hasText: vm => vm.currentText.length < 3,
-    explanation () {
-      if (this.currentType === 'avatar') {
+    explanation (vm) {
+      if (vm.currentType === 'app-avatar') {
         return 'Вставьте в поле ссылку на Ваше фото'
-      } else if (this.currentType === 'title') {
+      } else if (vm.currentType === 'app-title') {
         return 'Укажите название вакансии, которую Вы ищите'
-      } else if (this.currentType === 'subtitle') {
+      } else if (vm.currentType === 'app-subtitle') {
         return 'Выберите названия подзаголовка (например: "опыт работы, хобби, личные качества")'
       } else {
         return 'Напишите о своих достижениях'

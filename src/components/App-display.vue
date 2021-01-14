@@ -3,10 +3,14 @@
         <h3 v-if="informationArray.length === 0">Добавьте первый блок, чтобы увидеть результат</h3>
         
         <div v-else v-for="(info, i) in informationArray" :key="i">
-          <app-title v-if="info.typeValue === 'title'" :title="info.textValue"></app-title>
+          <component 
+            :is="info.typeValue" 
+            :info="info.textValue"
+          ></component>
+          <!-- <app-title v-if="info.typeValue === 'title'" :title="info.textValue"></app-title>
           <app-avatar v-else-if="info.typeValue === 'avatar'" :avatar="info.textValue"></app-avatar>
           <app-subtitle v-else-if="info.typeValue === 'subtitle'" :subtitle="info.textValue"></app-subtitle>
-          <app-text v-else-if="info.typeValue === 'text'" :text="info.textValue"></app-text>
+          <app-text v-else-if="info.typeValue === 'text'" :text="info.textValue"></app-text> -->
         </div>
     </div>
 </template>
@@ -31,7 +35,10 @@ export default {
       required: true
     },
     currentType: {
-      type:String
+      type:String,
+    },
+    currentText: {
+      type: String
     }
   },
 }
