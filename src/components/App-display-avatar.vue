@@ -1,15 +1,17 @@
 <template>
-  <p> {{info }}</p>
+    <div class="avatar">
+        <img :src="info">
+    </div>
 </template>
 
 <script>
 export default {
-  name: 'App-text',
+  name: 'App-display-avatar',
   props: {
-		info: {
+    info: {
       type: String
     }
-  }    
+  }     
 }
 </script>
 

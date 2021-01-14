@@ -1,15 +1,15 @@
 <template>
-    <h1>{{info}}</h1>
+  <p> {{info }}</p>
 </template>
 
 <script>
 export default {
-  name: 'App-title',
+  name: 'App-display-text',
   props: {
-    info: {
+		info: {
       type: String
     }
-  }      
+  }    
 }
 </script>
 

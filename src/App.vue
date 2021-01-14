@@ -28,7 +28,7 @@
             v-model="currentText"
             id="value" 
             rows="7"
-            :placeholder='explanation'
+            :placeholder='ee'
           >
           </textarea>
         </div>
@@ -69,24 +69,28 @@ export default {
   data () {
     return {
       informationArray: [],
-      currentType: 'app-title',
+      currentType: 'app-display-title',
       currentText: '',
       optionArray: [
         {
           label: 'Заголовок',
-          value: 'app-title'
+          value: 'app-display-title',
+          textplaceholder: 'Укажите название вакансии, которую Вы ищите'
         },
         {
           label: 'Подзаголовок',
-          value: 'app-subtitle'
+          value: 'app-display-subtitle',
+          textplaceholder:'Выберите названия подзаголовка (например: "опыт работы, хобби, личные качества")'
         },
         {
           label: 'Аватар',
-          value: 'app-avatar'
+          value: 'app-display-avatar',
+          textplaceholder: 'Вставьте в поле ссылку на Ваше фото'
         },
         {
           label: 'Текст',
-          value: 'app-text'
+          value: 'app-display-text',
+          textplaceholder: 'Напишите о своих достижениях'
         },
       ]
     }
@@ -104,14 +108,17 @@ export default {
   computed: {
     hasText: vm => vm.currentText.length < 3,
     explanation (vm) {
-      if (vm.currentType === 'app-avatar') {
-        return 'Вставьте в поле ссылку на Ваше фото'
-      } else if (vm.currentType === 'app-title') {
-        return 'Укажите название вакансии, которую Вы ищите'
-      } else if (vm.currentType === 'app-subtitle') {
-        return 'Выберите названия подзаголовка (например: "опыт работы, хобби, личные качества")'
-      } else {
-        return 'Напишите о своих достижениях'
+      switch(vm.currentType) {
+        case 'app-title': 
+          return 'Укажите название вакансии, которую Вы ищите';
+        case 'app-subtitle': 
+          return 'Выберите названия подзаголовка (например: "опыт работы, хобби, личные качества")';
+        case 'app-avatar': 
+          return 'Вставьте в поле ссылку на Ваше фото';
+        case 'app-text': 
+          return 'Напишите о своих достижениях';
+        default:
+          return ''
       }
     }
   },

@@ -2,7 +2,7 @@
     <div class="card card-w70">
         <h3 v-if="informationArray.length === 0">Добавьте первый блок, чтобы увидеть результат</h3>
         
-        <div v-else v-for="(info, i) in informationArray" :key="i">
+        <div v-else v-for="info in informationArray" :key="info.id">
           <component 
             :is="info.typeValue" 
             :info="info.textValue"
@@ -16,18 +16,18 @@
 </template>
 
 <script>
-import AppTitle from './App-title'
-import AppSubtitle from './App.subtitle'
-import AppAvatar from './App-avatar'
-import AppText from './App-text'
+import AppDisplayTitle from './App-display-title'
+import AppDisplaySubtitle from './App-display-subtitle'
+import AppDisplayAvatar from './App-display-avatar'
+import AppDisplayText from './App-display-text'
 
 export default {
   name: 'App-display',
   components: {
-    AppTitle,
-    AppSubtitle,
-    AppAvatar,
-    AppText
+    AppDisplayTitle,
+    AppDisplaySubtitle,
+    AppDisplayAvatar,
+    AppDisplayText
   },
   props: {
     informationArray: {

@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'App-subtitle',
+  name: 'App-display-subtitle',
   props: {
     info: {
       type: String
