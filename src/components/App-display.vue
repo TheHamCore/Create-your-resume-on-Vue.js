@@ -33,12 +33,6 @@ export default {
     informationArray: {
       type: Array,
       required: true
-    },
-    currentType: {
-      type:String,
-    },
-    currentText: {
-      type: String
     }
   },
 }

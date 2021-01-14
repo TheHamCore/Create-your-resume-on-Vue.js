@@ -28,7 +28,7 @@
             v-model="currentText"
             id="value" 
             rows="7"
-            :placeholder='ee'
+            :placeholder='placeholder.text'
           >
           </textarea>
         </div>
@@ -44,8 +44,6 @@
 
       <app-display
         :informationArray="informationArray"
-        :currentType="currentType"
-        :currentText="currentText"
       >
       </app-display>
 
@@ -75,22 +73,22 @@ export default {
         {
           label: 'Заголовок',
           value: 'app-display-title',
-          textplaceholder: 'Укажите название вакансии, которую Вы ищите'
+          text: 'Укажите название вакансии, которую Вы ищите'
         },
         {
           label: 'Подзаголовок',
           value: 'app-display-subtitle',
-          textplaceholder:'Выберите названия подзаголовка (например: "опыт работы, хобби, личные качества")'
+          text:'Выберите названия подзаголовка (например: "опыт работы, хобби, личные качества")'
         },
         {
           label: 'Аватар',
           value: 'app-display-avatar',
-          textplaceholder: 'Вставьте в поле ссылку на Ваше фото'
+          text: 'Вставьте в поле ссылку на Ваше фото'
         },
         {
           label: 'Текст',
           value: 'app-display-text',
-          textplaceholder: 'Напишите о своих достижениях'
+          text: 'Напишите о своих достижениях'
         },
       ]
     }
@@ -107,19 +105,12 @@ export default {
   },
   computed: {
     hasText: vm => vm.currentText.length < 3,
-    explanation (vm) {
-      switch(vm.currentType) {
-        case 'app-title': 
-          return 'Укажите название вакансии, которую Вы ищите';
-        case 'app-subtitle': 
-          return 'Выберите названия подзаголовка (например: "опыт работы, хобби, личные качества")';
-        case 'app-avatar': 
-          return 'Вставьте в поле ссылку на Ваше фото';
-        case 'app-text': 
-          return 'Напишите о своих достижениях';
-        default:
-          return ''
-      }
+    placeholder (vm) {
+      return vm.optionArray.find((item) => {
+        if (item.value === vm.currentType) {
+          return item
+        }
+      })
     }
   },
 }
