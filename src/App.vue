@@ -28,7 +28,7 @@
             v-model="currentText"
             id="value" 
             rows="7"
-            :placeholder='placeholder.text'
+            :placeholder='currentOption.text'
           >
           </textarea>
         </div>
@@ -105,14 +105,11 @@ export default {
   },
   computed: {
     hasText: vm => vm.currentText.length < 3,
-    placeholder (vm) {
-      return vm.optionArray.find((item) => {
-        if (item.value === vm.currentType) {
-          return item
-        }
-      })
-    }
-  },
+    currentOption: vm => vm.optionArray.find(item => item.value === vm.currentType)
+      // return vm.optionArray.find((item) => {
+      //   if (item.value === vm.currentType) {
+      //     return item
+  }
 }
 
 </script>
